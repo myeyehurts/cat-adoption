@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Create Profile</title>
+{% endblock %}
+<main>
+    {% block content %}
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <p class="alert">{{ message }}</p>
+                 {% endfor %}
+            </div>
+        {% endif %}
+        <h1>Fill out adoption profile</h1>
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    {% endblock %}
+</main>

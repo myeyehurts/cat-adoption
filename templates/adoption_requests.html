@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Adoption Requests</title>
+{% endblock %}
+<main>
+    {% block content %}
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <p class="alert">{{ message }}</p>
+                 {% endfor %}
+            </div>
+        {% endif %}
+        <h1>Adoption Requests</h1>
+            {% if adoption_requests %}
+                <p>If a request is marked "decision made", we have attempted to make contact with you by phone/email.</p>
+                {% for request in adoption_requests %}
+                    <div class="adoption-request">
+                        <img src = "/media/{{ request.cat.photo }}" alt = "cat photo" height = "220px">
+                        <div class = "left-text">
+                            <h3>#{{ request.id }}: {{ request.cat.name }}</h3>
+                            <p>Status: {{ request.status }}</p>
+                            <p>Submitted {{ request.date }}</p>
+                            {% if request.status == 'Pending' %}
+                                <!-- ability to cancel is only made visible for pending requests -->
+                                 <a href="{% url 'cancel_adoption' request.id %}">
+                                <button class = "adopt-button">
+                                    Cancel
+                                </button>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h3>You have no adoption requests.</h3>
+            {% endif %}
+    {% endblock %}
+</main>

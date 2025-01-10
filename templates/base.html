@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% block title %}
+            <title>Title</title>
+        {% endblock %}
+        <link rel="stylesheet" href = "{% static 'style.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Murecho:wght@100..900&family=Workbench&display=swap" rel="stylesheet">
+        <link rel="icon" href="{% static 'images/cat_icon.png' %}">
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+        <main>
+            {% block content %} <!-- all unique page content will go in here -->
+            {% endblock %}
+        </main>
+    </body>
+</html>

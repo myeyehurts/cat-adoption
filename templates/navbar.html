@@ -1,0 +1,53 @@
+{% load static %}
+<link rel="stylesheet" href = "{% static 'style.css' %}"> <!-- requires its own link to css -->
+<body>
+    <nav>
+        <div class = nav-content>
+             <a href="{% url 'index' %}">
+                 <button>
+                     Home
+                 </button>
+             </a>
+            <a href="{% url 'cats' %}">
+                <button>
+                    Cats
+                </button>
+            </a>
+            <div class="user">
+                 <!-- if there is a user logged in, username and profile picture are displayed with full site links -->
+                 {% if user.is_authenticated %}
+                     Logged in as {{ user }}
+                     {% if user.profile_pic %}
+                        <img src = "/media/{{ user.profile_pic }}" alt="profile pic" class="profile_pic">
+                     {% endif %}
+                     <a href="{% url 'view_or_edit_profile' %}">
+                         <button>
+                             View/edit profile
+                         </button>
+                     </a>
+                     <a href="{% url 'adoption_requests' %}">
+                         <button>
+                             View requests
+                         </button>
+                     </a>
+                     <a href="{% url 'logout' %}">
+                         <button>
+                             Log out
+                         </button>
+                     </a>
+                 {% else %} <!-- otherwise they are limited to only register and login -->
+                    <a href="{% url 'register' %}">
+                        <button>
+                            Register
+                        </button>
+                    </a>
+                    <a href="{% url 'login' %}">
+                        <button>
+                            Log in
+                        </button>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</body>

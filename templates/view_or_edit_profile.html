@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>View/Edit Profile</title>
+{% endblock %}
+<main>
+    {% block content %}
+        {% for message in messages %}
+            <p class="alert">{{ message }}</p>
+        {% endfor %}
+        <h1>View/Edit Profile</h1>
+        <h3>{{ user }}'s adoption profile:</h3>
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Save changes</button>
+            </form>
+        </div>
+        <a href="{% url 'index' %}">Exit</a>
+    {% endblock %}
+</main>

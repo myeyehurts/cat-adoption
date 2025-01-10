@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Adopt</title>
+{% endblock %}
+<main>
+    {% block content %}
+        <h1>Adopt {{ cat.name }}</h1>
+        <img src = "/media/{{ cat.photo }}" alt = "cat photo" height = "220px">
+        <div class="bordered-box">
+            <p class="left-text">
+            <b>NOTE: Adopting a cat is a major life commitment. It is important to consider your lifestyle and financial situation before making such a decision. Ensure that you are in fit condition to take care of another living being. </b>
+            </p>
+        </div>
+        <br><br>
+        <p>The information from your existing adoption profile will be used for this process.<br>
+        If you would like to review/edit your information:</p>
+        <a href="{% url 'view_or_edit_profile'%}">
+            <button>Profile</button>
+        </a>
+        <br><br>
+        <p><b>Submit adoption request?</b></p>
+        <div class = "form-container">
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit">Submit</button>
+            </form>
+            <a href="{% url 'cats'%}"> Cancel  </a>
+        </div>
+    {% endblock %}
+</main>

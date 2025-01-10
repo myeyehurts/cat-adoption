@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    font-family: "Murecho", sans-serif;
+}
+
+nav {
+    border-bottom: 2px solid #8b70b4;
+    width: 100%;
+}
+
+.nav-content {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+button {
+    background-color: #8b70b4;
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-family: "Murecho", sans-serif;
+    padding: 5px;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.home-ul {
+    text-align: left;
+    width: 100%;
+    height: 100%;
+}
+.user {
+    display: flex;
+    margin-left: auto;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.cats {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 300px 300px 300px;
+    column-gap: 20px;
+    row-gap: 20px;
+    padding-top: 20px;
+}
+
+.cat-card {
+    border: 2px solid #8b70b4;
+    justify-items: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+}
+
+.cat-card ul {
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+    padding: 0;
+}
+
+.adopt-button {
+    margin-top: 0;
+}
+
+form {
+    text-align: left;
+}
+
+.form-container {
+  justify-self: center;
+}
+
+.adoption-request {
+  border: 2px solid #8b70b4;
+    display: flex;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.left-text {
+    text-align: left;
+    padding: 10px;
+}
+
+.bordered-box {
+    border: 2px solid #8b70b4;
+    width: 50%;
+    margin: 10px auto;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+}

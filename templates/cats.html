@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Cats</title>
+{% endblock %}
+<main>
+    {% block content %}
+        <h1>Cats</h1>
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <p class="alert">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="grid"> <!-- entire page content minus title -->
+            <div class="left-text"> <!-- filters -->
+                <p><b>Filter</b> (blank = all)</p>
+                <form method="get" action="{% url 'cats' %}">
+                   {% for field, data in fields.items %}
+                       <div class="filter"> <!-- get each filter category -->
+                           <label>{{ data.verbose_name }}</label>
+                           {% for value, label in data.choices.items %}
+                               <!-- get each option as a checkbox -->
+                               <label><input type="checkbox" name="{{ field }}" value="{{ value }}"> {{ label }}</label>
+                           {% endfor %}
+                       </div>
+                   {% endfor %}
+                   <div class="filter"> <!-- separate handling for has_special_needs -->
+                       <label for="has_special_needs">Has special needs</label>
+                       <label><input type="checkbox" name="has_special_needs" value="True"> Yes</label>
+                       <label><input type="checkbox" name="has_special_needs" value="False"> No</label>
+                   </div>
+                   <button type="submit">Apply filters</button>
+                   <a href="{% url 'cats' %}">Clear</a> <!-- this clears filters just by refreshing the page -->
+                </form>
+            </div>
+            <div class="cats"> <!-- displaying cats (with filters already applied) -->
+                {% for cat in cats %}
+                    <div class = "cat-card">
+                        <img src = "/media/{{ cat.photo }}" alt = "cat photo">
+                        <h2>{{ cat.name }}</h2>
+                        <p>{{ cat.age }}, {{ cat.sex }}</p>
+                        <ul>
+                            <li>Breed: {{ cat.breed }}</li>
+                            <li>Coat length: {{ cat.coat_length }}</li>
+                            <li>Temperament: {{ cat.temperament }}</li>
+                            {% if cat.has_special_needs %}
+                                <li><p>I have special needs that require extra attention!</p></li>
+                            {% endif %}
+                        </ul>
+                        <!-- directs user to an adoption page for that specific cat using its id -->
+                        <a href="{% url 'adopt' cat.id %}">
+                            <button class = "adopt-button">
+                                Adopt
+                            </button>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}
+</main>
+

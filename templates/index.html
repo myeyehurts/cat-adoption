@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block title %}
+    <title>Home</title>
+ {% endblock %}
+<main>
+   {% block content %}
+       {% if messages %}
+           <div>
+               {% for message in messages %}
+                   <p class="alert">{{ message }}</p>
+               {% endfor %}
+           </div>
+       {% endif %}
+       <h1> Cat Adoption</h1>
+       <img src="{% static 'images/little_guy.jpg' %}" alt = "small kitten" width = 600px>
+       <h3>Browse cats and apply to adopt them!</h3>
+       <div class="bordered-box">
+           <h2>Steps:</h2>
+           <ul class="home-ul">
+               <li>Make an account</li>
+               <li>Fill out an adoption profile</li>
+               <li>Browse cats</li>
+               <li>Apply to adopt your favourite(s)</li>
+               <li>Wait for a response</li>
+           </ul>
+       </div>
+   {% endblock %}
+</main>

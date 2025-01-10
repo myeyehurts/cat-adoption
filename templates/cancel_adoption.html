@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Title</title>
+{% endblock %}
+<main>
+    {% block content %}
+        <h1>Cancel Adoption Request</h1>
+        <p>Are you sure you would like to cancel request
+            <b>#{{ adoption_request.id }}: {{ adoption_request.cat.name }} </b>?
+            You will not be able to return to this request.
+        </p>
+          <div class = "form-container">
+                <form method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Cancel</button>
+                </form>
+                <a href="{% url 'adoption_requests'%}"> Return to requests </a>
+            </div>
+    {% endblock %}
+</main>
