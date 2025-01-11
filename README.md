@@ -1,5 +1,5 @@
 <h1>cat-adoption</h1>
-This is a Django application that simulates a cat adoption hub. Users can view the cats available for adoption and submit requests to adopt specific cats. Solo final project for BIT2008: Multimedia Data Management.
+This is a Django application that simulates a cat adoption hub. Users can view the cats available for adoption and submit requests to adopt specific cats. Solo final project for BIT2008: Multimedia Data Management. Note- this is a copy of my original submission to Carleton-BIT's Github classroom, I could not obtain personal access to the original.
 </br>
 <img src="https://github.com/user-attachments/assets/20f23cf9-3d20-4df4-a237-3bfc2dcac8ff" width="500px">
 <h2>How It Works:</h2>
